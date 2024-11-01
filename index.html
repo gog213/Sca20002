@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning de Compétition - Groupe Compétition SCA2000 Evry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #e91e63;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #ffe4e1;
+            color: #333;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f8bbd0;
+        }
+
+        tr:hover td {
+            background-color: #f06292;
+            color: #fff;
+        }
+
+        caption {
+            caption-side: top;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e91e63;
+            margin-bottom: 10px;
+        }
+
+        img.logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="logoSca.png" alt="Logo SCA2000 Evry" class="logo">
+    <h1>Planning de Compétition - Groupe Compétition SCA2000 Evry</h1>
+    <table id="planningTable">
+        <caption>Calendrier des Compétitions et Activités</caption>
+        <thead>
+            <tr>
+                <th>Lieux/Mois</th>
+                <th>Novembre</th>
+                <th>Novembre</th>
+                <th>Decembre</th>
+                <th>Janvier</th>
+                <th>Février</th>
+                <th>Mars</th>
+                <th>Avril</th>
+                <th>Mai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Corbeil OU Aqua-Senart</td>
+                <td>09/11/2024 10/11/2024 Championnat Benjamin (Amira,Sultana et Victoria)</td>
+                <td>23/11/2024-24/11/2024 Championnat de l'Essonne (Ny Tinay)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> La Norville</td>
+                <td></td>
+                <td></td>
+                <td>08/12/2024 Journée Départementale</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Saint-Michel</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>09/02/2025 Journée Départementale</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Etampes</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>16/03/2025 Journée Départementale</td>
+                <td></td>
+                <td>18/05/2025 Journée Départementale</td>
+            </tr>
+            <!-- Ajouter d'autres lignes de tâches selon les besoins -->
+        </tbody>
+    </table>
+
+    <button onclick="downloadTablePDF()" style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 1.1em; background-color: #e91e63; color: white; border: none; cursor: pointer;">Télécharger le tableau en PDF</button>
+
+    <p style="text-align: center; font-size: 1.2em; margin-top: 20px;">
+      Un message vous sera envoyé sur le groupe WhatsApp avant chaque compétition, où l'horaire et l'adresse vous seront communiqués ainsi que toute modification possible.
+  </p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+
+        function downloadTablePDF() {
+            html2canvas(document.getElementById('planningTable')).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF();
+                pdf.setFontSize(16);
+                pdf.text('Planning de Compétition - Groupe Compétition SCA2000 Evry', 10, 10);
+                pdf.addImage(imgData, 'PNG', 10, 20, 190, 0);
+                pdf.save('planning_competition.pdf');
+            });
+        }
+    </script>
+</body>
+</html>
